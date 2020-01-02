@@ -22,7 +22,8 @@ from homeassistant.components.media_player.const import (
     SUPPORT_TURN_ON,
     SUPPORT_VOLUME_MUTE,
     SUPPORT_VOLUME_SET,
-    SUPPORT_VOLUME_STEP
+    SUPPORT_VOLUME_STEP,
+    SUPPORT_SELECT_SOUND_MODE
 )
 from homeassistant.const import (
     CONF_ACCESS_TOKEN,
