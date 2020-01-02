@@ -140,7 +140,7 @@ class Endpoints(object):
             "POWER":        "/state/device/power_mode",
             "KEY_PRESS":    "/key_command/",
             "VOLUME":       "/menu_native/dynamic/tv_settings/audio/volume",
-            "PIC_MODES":    "/menu_native/dynamic/tv_settings/picture/picture_mode",
+            "PMODES":       "/menu_native/dynamic/tv_settings/picture/picture_mode",
             "CURR_PMODE":   "",
             "SET_PMODE":    ""
         },
