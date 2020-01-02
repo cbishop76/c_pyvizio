@@ -68,7 +68,7 @@ class GetCurrentPmodeCommand(InfoCommandBase):
         pmodes = []
         if items is not None:
             for itm in items:
-                v_pmode = VizioPmode(itm)
+                v_pmode = VizioPmode(itm, False)
                 pmodes.append(v_pmode)
         return v_pmode.value
 
