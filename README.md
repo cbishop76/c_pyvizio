@@ -11,7 +11,7 @@ Custom Modification to implement changing Picture Mode.  Media Player Device in 
 Either through pip
 
 ```
-pip3 install git+https://github.com/vkorn/pyvizio.git@master
+pip3 install git+https://github.com/cbishop76/pyvizio.git@master
 ```
 
 or checkout repo and run 
