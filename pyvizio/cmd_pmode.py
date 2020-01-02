@@ -11,8 +11,8 @@ class VizioPmode(object):
         self.elements = get_json_obj(json_item, ProtoConstants.Item.ELEMENTS)
         
         
-#        self.meta_name = None
-#        self.meta_data = None
+        self.meta_name = None
+        self.meta_data = None
 
 #        meta = get_json_obj(json_item, ProtoConstants.Item.VALUE)
 #        if meta is not None:
