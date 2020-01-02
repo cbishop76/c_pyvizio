@@ -5,6 +5,7 @@ import requests
 import xmltodict
 
 from .cmd_input import GetInputsListCommand, GetCurrentInputCommand, ChangeInputCommand
+from .cmd_pmode import GetPmodesListCommand, GetCurrentPmodeCommand, ChangePmodeCommand
 from .cmd_pair import BeginPairCommand, CancelPairCommand, PairChallengeCommand
 from .cmd_power import GetPowerStateCommand
 from .cmd_remote import EmulateRemoteCommand
@@ -107,6 +108,12 @@ class Vizio(object):
     def get_current_input(self):
         return self.__invoke_api_may_need_auth(GetCurrentInputCommand(self._device_type))
 
+    def get_pmodes(self):
+        return self.__invoke_api_may_need_auth(GetPmodesListCommand(self._device_type))
+
+    def get_current_pmode(self):
+        return self.__invoke_api_may_need_auth(GetCurrentPmodeCommand(self._device_type))
+
     def get_power_state(self):
         return self.__invoke_api_may_need_auth(GetPowerStateCommand(self._device_type))
 
@@ -159,6 +166,13 @@ class Vizio(object):
             _LOGGER.error("Couldn't detect current input")
             return False
         return self.__invoke_api_may_need_auth(ChangeInputCommand(cur_input.id, name, self._device_type))
+
+    def pmode_switch(self, name):
+        cur_pmode = self.get_current_pmode()
+        if cur_pmode is None:
+            _LOGGER.error("Couldn't detect current picture mode")
+            return False
+        return self.__invoke_api_may_need_auth(ChangePmodeCommand(cur_pmode.id, name, self._device_type))
 
     def play(self):
         return self.__remote("PLAY")
