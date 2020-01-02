@@ -9,8 +9,8 @@ if sys.version_info < (3, 4):
     sys.exit(1)
 
 _LOGGER = logging.getLogger(__name__)
-DEVICE_ID = "pyvizio"
-DEVICE_NAME = "Python Vizio"
+DEVICE_ID = "cpyvizio"
+DEVICE_NAME = "Python Vizio C"
 
 pass_vizio = click.make_pass_decorator(pyvizio.Vizio)
 
@@ -82,12 +82,37 @@ def input_list(vizio):
 
 @cli.command()
 @pass_vizio
+def pmode_list(vizio):
+    pmodes = vizio.get_pmodes()
+    if pmodes:
+        log_data = "Available picture modes:" \
+                "\nName\tFriendly name\tType\tID"
+        for v_pmode in pmodes:
+            log_data += "\n{0}\t{1}\t{2}\t{3}".format(v_pmode.name, v_pmode.meta_name, v_pmode.type, v_pmode.id)
+
+        _LOGGER.info(log_data)
+    else:
+        _LOGGER.error("Couldn't get available picture modes")
+
+
+@cli.command()
+@pass_vizio
 def input_get(vizio):
     data = vizio.get_current_input()
     if data:
         _LOGGER.info("Current input: %s", data.meta_name)
     else:
         _LOGGER.error("Couldn't get current input")
+    
+
+@cli.command()
+@pass_vizio
+def pmode_get(vizio):
+    data = vizio.get_current_pmode()
+    if data:
+        _LOGGER.info("Current picture mode: %s", data.meta_name)
+    else:
+        _LOGGER.error("Couldn't get current picture mode")
     
 
 @cli.command()
@@ -192,6 +217,15 @@ def input_next(vizio):
 def input(vizio, name):
     result = vizio.input_switch(name)
     _LOGGER.info("Switching input")
+    _LOGGER.info("OK" if result else "ERROR")
+
+
+@cli.command(name="pmode")
+@click.option('--name', required=True)
+@pass_vizio
+def pmode(vizio, name):
+    result = vizio.pmode_switch(name)
+    _LOGGER.info("Switching picture mode")
     _LOGGER.info("OK" if result else "ERROR")
 
 
