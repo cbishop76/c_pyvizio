@@ -61,6 +61,7 @@ COMMON_SUPPORTED_COMMANDS = (
     | SUPPORT_VOLUME_MUTE
     | SUPPORT_VOLUME_SET
     | SUPPORT_VOLUME_STEP
+    | SUPPORT_SELECT_SOUND_MODE
 )
 
 SUPPORTED_COMMANDS = {
@@ -124,6 +125,8 @@ class VizioDevice(MediaPlayerDevice):
         self._volume_step = volume_step
         self._current_input = None
         self._available_inputs = None
+        self._current_pmode = None
+        self._available_pmodes = None
         self._device_type = device_type
         self._supported_commands = SUPPORTED_COMMANDS[device_type]
         self._device = pyvizio.Vizio(DEVICE_ID, host, DEFAULT_NAME, token,
@@ -150,6 +153,14 @@ class VizioDevice(MediaPlayerDevice):
             if inputs is not None:
                 self._available_inputs = [input_.name for input_ in inputs]
 
+            pmode_ = self._device.get_current_pmode()
+            if pmode_ is not None:
+                self._current_pmode = pmode_.meta_name
+
+            pmodes = self._device.get_pmodes()
+            if pmodes is not None:
+                self._available_pmodes = [pmode_.name for pmode_ in pmodes]
+
         else:
             if is_on is None:
                 self._state = None
@@ -159,6 +170,8 @@ class VizioDevice(MediaPlayerDevice):
             self._volume_level = None
             self._current_input = None
             self._available_inputs = None
+            self._current_pmode = None
+            self._available_pmodes = None
 
     @property
     def state(self):
@@ -184,6 +197,16 @@ class VizioDevice(MediaPlayerDevice):
     def source_list(self):
         """Return list of available inputs of the device."""
         return self._available_inputs
+
+    @property
+    def sound_mode(self):
+        """Return current picture mode of the device."""
+        return self._current_pmode
+
+    @property
+    def sound_mode_list(self):
+        """Return list of picture modes of the device."""
+        return self._available_pmodes
 
     @property
     def supported_features(self):
@@ -224,6 +247,10 @@ class VizioDevice(MediaPlayerDevice):
     def select_source(self, source):
         """Select input source."""
         self._device.input_switch(source)
+
+    def select_sound_mode(self, sound_mode):
+        """Select picture mode."""
+        self._device.pmode_switch(sound_mode)
 
     def volume_up(self):
         """Increasing volume of the device."""
