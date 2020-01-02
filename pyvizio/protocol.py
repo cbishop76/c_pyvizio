@@ -141,7 +141,7 @@ class Endpoints(object):
             "KEY_PRESS":    "/key_command/",
             "VOLUME":       "/menu_native/dynamic/tv_settings/audio/volume",
             "PMODES":       "/menu_native/dynamic/tv_settings/picture/picture_mode",
-            "CURR_PMODE":   "",
+            "CURR_PMODE":   "/menu_native/dynamic/tv_settings/picture/picture_mode",
             "SET_PMODE":    ""
         },
         "soundbar":
