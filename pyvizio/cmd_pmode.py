@@ -70,7 +70,7 @@ class GetCurrentPmodeCommand(InfoCommandBase):
             for itm in items:
                 v_pmode = VizioPmode(itm, False)
                 pmodes.append(v_pmode)
-        return v_pmode.value
+        return v_pmode
 
 class ChangePmodeCommand(CommandBase):
     def __init__(self, id_, name, device_type):
