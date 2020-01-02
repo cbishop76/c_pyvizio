@@ -61,8 +61,9 @@ class GetCurrentPmodeCommand(InfoCommandBase):
     def process_response(self, json_obj):
         items = get_json_obj(json_obj, ProtoConstants.RESPONSE_ITEMS)
         v_pmode = None
-        if len(items) > 0:
-            v_pmode = VizioPmode(items[0], False)
+#        if len(items) > 0:
+#            v_pmode = VizioPmode(items[0], False)
+        v_pmode = VizioPmode(value, False)
         return v_pmode
 
 
