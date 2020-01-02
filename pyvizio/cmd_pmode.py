@@ -14,16 +14,16 @@ class VizioPmode(object):
         self.meta_name = None
         self.meta_data = None
 
-#        meta = get_json_obj(json_item, ProtoConstants.Item.VALUE)
-#        if meta is not None:
-#            if is_extended_metadata:
-#                self.meta_name = get_json_obj(meta, ProtoConstants.Item.NAME)
-#                self.meta_data = get_json_obj(meta, ProtoConstants.Item.METADATA)
-#            else:
-#                self.meta_name = meta
+        meta = get_json_obj(json_item, ProtoConstants.Item.VALUE)
+        if meta is not None:
+            if is_extended_metadata:
+                self.meta_name = get_json_obj(meta, ProtoConstants.Item.NAME)
+                self.meta_data = get_json_obj(meta, ProtoConstants.Item.METADATA)
+            else:
+                self.meta_name = meta
 
-#        if self.meta_name is None or "" == self.meta_name:
-#            self.meta_name = self.c_name
+        if self.meta_name is None or "" == self.meta_name:
+            self.meta_name = self.c_name
 
 
 class GetPmodesListCommand(InfoCommandBase):
