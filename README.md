@@ -4,6 +4,8 @@ Simple cli and API implementation for Vizio SmartCast TVs and Sound Bars. Mainly
 integration with [HASS](http://home-assistant.io). Note that some of the interaction commands are not supported by 
 sound bars.
 
+Custom Modification to implement changing Picture Mode.  Media Player Device in HASS only supports sound mode - the modification will return/select picture modes on Vizio TV's through the sound mode interface in HASS.
+
 ## Installation
 
 Either through pip
