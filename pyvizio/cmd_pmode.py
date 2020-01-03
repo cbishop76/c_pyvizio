@@ -47,6 +47,7 @@ class GetPmodesListCommand(InfoCommandBase):
             for itm in items:
                 v_pmode = VizioPmode(itm, True)
                 pmodes.append(v_pmode)
+        print ("hello")
 
         return pmodes
 
