@@ -1,4 +1,5 @@
 from .protocol import get_json_obj, ProtoConstants, InfoCommandBase, CommandBase, Endpoints
+import json
 
 
 class VizioPmode(object):
