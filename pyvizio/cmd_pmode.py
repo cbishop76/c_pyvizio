@@ -37,7 +37,7 @@ class GetPmodesListCommand(InfoCommandBase):
 
     def process_response(self, json_obj):
         items = get_json_obj(json_obj,ProtoConstants.RESPONSE_ITEMS)
-        elements = json.loads(items)
+        elements = json.loads(json_obj)
         print(elements)
         # Last input for sound bar is the current input so it needs to be removed before processing
 #        if self._device_type == "soundbar":
