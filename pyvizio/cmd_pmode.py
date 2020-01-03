@@ -42,13 +42,9 @@ class GetPmodesListCommand(InfoCommandBase):
 #            items = items[:-1]
 
         pmodes = []
-        print("one")
-        print(items)
-        print(items[0]["ELEMENTS"])
+
         if items is not None:
-            print("two")
             for itm in items[0]["ELEMENTS"]:
-                print(itm)
                 v_pmode = VizioPmode(items[0], False)
                 v_pmode.name = itm
                 v_pmode.meta_name = itm
