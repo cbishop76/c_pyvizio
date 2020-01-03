@@ -46,7 +46,7 @@ class GetPmodesListCommand(InfoCommandBase):
         print(items)
         if items is not None:
             print("two")
-            for itm in items.["ELEMENTS"]:
+            for itm in items.ELEMENTS:
                 print(itm)
                 v_pmode = VizioPmode(itm, True)
                 pmodes.append(v_pmode)
