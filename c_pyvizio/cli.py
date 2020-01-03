@@ -22,7 +22,7 @@ pass_vizio = click.make_pass_decorator(c_pyvizio.c_Vizio)
 @click.pass_context
 def cli(ctx, ip, auth, device_type):
     logging.basicConfig(level=logging.INFO)
-    ctx.obj = pyvizio.Vizio(DEVICE_ID, ip, DEVICE_NAME, auth, device_type)
+    ctx.obj = c_pyvizio.c_Vizio(DEVICE_ID, ip, DEVICE_NAME, auth, device_type)
 
 
 @cli.command()
