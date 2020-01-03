@@ -51,6 +51,7 @@ class GetPmodesListCommand(InfoCommandBase):
                 print(itm)
                 v_pmode = VizioPmode(items[0], False)
                 v_pmode.name = itm
+                v_pmode.meta_name = itm
                 pmodes.append(v_pmode)
             
         return pmodes
