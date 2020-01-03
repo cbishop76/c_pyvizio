@@ -29,7 +29,7 @@ class DeviceDescription(object):
         self.udn = udn
 
 
-class Vizio(object):
+class c_Vizio(object):
     def __init__(self, device_id, ip, name, auth_token="", device_type="tv"):
         self._device_type = device_type.lower()
         if self._device_type != "tv" and self._device_type != "soundbar":
