@@ -142,7 +142,7 @@ class Endpoints(object):
             "VOLUME":       "/menu_native/dynamic/tv_settings/audio/volume",
             "PMODES":       "/menu_native/dynamic/tv_settings/picture/picture_mode",
             "CURR_PMODE":   "/menu_native/dynamic/tv_settings/picture/picture_mode",
-            "SET_PMODE":    ""
+            "SET_PMODE":    "/menu_native/dynamic/tv_settings/picture/picture_mode"
         },
         "soundbar":
         {
