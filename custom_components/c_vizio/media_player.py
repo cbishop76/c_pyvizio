@@ -35,18 +35,18 @@ from homeassistant.const import (
 )
 from homeassistant.helpers import config_validation as cv
 
-REQUIREMENTS = ['pyvizio==0.0.7']
+REQUIREMENTS = ['c_pyvizio==0.0.7']
 
 _LOGGER = logging.getLogger(__name__)
 
 CONF_SUPPRESS_WARNING = 'suppress_warning'
 CONF_VOLUME_STEP = 'volume_step'
 
-DEFAULT_NAME = 'Vizio SmartCast'
+DEFAULT_NAME = 'C Vizio SmartCast'
 DEFAULT_VOLUME_STEP = 1
 DEFAULT_DEVICE_CLASS = 'tv'
-DEVICE_ID = 'cpyvizio'
-DEVICE_NAME = 'Python Vizio C'
+DEVICE_ID = 'c_pyvizio'
+DEVICE_NAME = 'C Python Vizio'
 
 ICON = 'mdi:television'
 
@@ -113,12 +113,12 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     add_entities([device], True)
 
 
-class VizioDevice(MediaPlayerDevice):
+class C_VizioDevice(MediaPlayerDevice):
     """Media Player implementation which performs REST requests to device."""
 
     def __init__(self, host, token, name, volume_step, device_type):
         """Initialize Vizio device."""
-        import pyvizio
+        import c_pyvizio
 
         self._name = name
         self._state = None
