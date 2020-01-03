@@ -35,7 +35,7 @@ class GetPmodesListCommand(InfoCommandBase):
         self._device_type = device_type
 
     def process_response(self, json_obj):
-        items = get_json_obj(json_obj, "ELEMENTS")
+        items = get_json_obj(json_obj,ProtoConstants.RESPONSE_ITEMS)
         
         # Last input for sound bar is the current input so it needs to be removed before processing
 #        if self._device_type == "soundbar":
@@ -47,8 +47,8 @@ class GetPmodesListCommand(InfoCommandBase):
             for itm in items:
                 v_pmode = VizioPmode(itm, True)
                 pmodes.append(v_pmode)
-        else:
-            print ("hello")
+                print (v_pmode.elements)
+            
 
         return pmodes
 
