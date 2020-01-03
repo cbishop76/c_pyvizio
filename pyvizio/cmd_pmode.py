@@ -49,9 +49,9 @@ class GetPmodesListCommand(InfoCommandBase):
             print("two")
             for itm in items[0]["ELEMENTS"]:
                 print(itm)
-                #v_pmode = VizioPmode(itm, True)
-                #pmodes.append(v_pmode)
-                pmodes.append(itm)
+                v_pmode = VizioPmode(null, True)
+                v_pmode.name = itm
+                pmodes.append(v_pmode)
             
         return pmodes
 
