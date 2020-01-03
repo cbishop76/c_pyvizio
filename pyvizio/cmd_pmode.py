@@ -42,6 +42,7 @@ class GetPmodesListCommand(InfoCommandBase):
 #            items = items[:-1]
 
         pmodes = []
+        print("one")
 
         if items is not None:
             for itm in items:
