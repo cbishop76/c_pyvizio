@@ -93,7 +93,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     name = config.get(CONF_NAME)
     volume_step = config.get(CONF_VOLUME_STEP)
     device_type = config.get(CONF_DEVICE_CLASS)
-    device = VizioDevice(host, token, name, volume_step, device_type)
+    device = c_VizioDevice(host, token, name, volume_step, device_type)
     if device.validate_setup() is False:
         _LOGGER.error("Failed to set up Vizio platform, "
                       "please check if host and API key are correct")
@@ -113,7 +113,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     add_entities([device], True)
 
 
-class C_VizioDevice(MediaPlayerDevice):
+class c_VizioDevice(MediaPlayerDevice):
     """Media Player implementation which performs REST requests to device."""
 
     def __init__(self, host, token, name, volume_step, device_type):
@@ -130,7 +130,7 @@ class C_VizioDevice(MediaPlayerDevice):
         self._available_pmodes = None
         self._device_type = device_type
         self._supported_commands = SUPPORTED_COMMANDS[device_type]
-        self._device = pyvizio.Vizio(DEVICE_ID, host, DEFAULT_NAME, token,
+        self._device = c_pyvizio.c_Vizio(DEVICE_ID, host, DEFAULT_NAME, token,
                                      device_type)
         self._max_volume = float(self._device.get_max_volume())
 
