@@ -118,7 +118,7 @@ class c_VizioDevice(MediaPlayerDevice):
 
     def __init__(self, host, token, name, volume_step, device_type):
         """Initialize Vizio device."""
-        import .c_pyvizio
+        import c_pyvizio
 
         self._name = name
         self._state = None
