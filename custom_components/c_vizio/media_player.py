@@ -130,7 +130,7 @@ class c_VizioDevice(MediaPlayerDevice):
         self._available_pmodes = None
         self._device_type = device_type
         self._supported_commands = SUPPORTED_COMMANDS[device_type]
-        self._device = c_pyvizio.c_Vizio(DEVICE_ID, host, DEFAULT_NAME, token,
+        self._device = c_vizio.c_Vizio(DEVICE_ID, host, DEFAULT_NAME, token,
                                      device_type)
         self._max_volume = float(self._device.get_max_volume())
 
